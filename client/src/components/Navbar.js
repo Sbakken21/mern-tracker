@@ -19,15 +19,15 @@ class Navbar extends Component {
                                 <a className="nav-link" href="/">Features</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/">About</a>
+                                <a className="nav-link" href="/about">About</a>
                             </li>
                         </ul>
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <a className="nav-link" href="/">Sign Up</a>
+                                <a className="nav-link" href="/signup">Sign Up</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/">Login</a>
+                                <a className="nav-link" href="/signin">Login</a>
                             </li>
                         </ul>
                     </div>
