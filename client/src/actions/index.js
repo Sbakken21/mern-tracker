@@ -1,9 +1,7 @@
-// import axios from 'axios';
-// import { FETCH_USER } from './types';
+import axios from 'axios';
 
-// const fetchUser = () => {
-//     return function() {
-//         axios.get('/api/user')
-//             .then(res => dispatch({ type: FETCH_USER, payload: res }));
-//     };
-// };
+export function signinUser({ username, password }) {
+    return function(dispatch) {
+       axios.post('/login', { username, password })
+    }
+}

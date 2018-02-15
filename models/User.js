@@ -12,18 +12,12 @@ const userSchema = new Schema ({
     password: {
         type: String,
         required: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        lowercase: true
     }
 });
 
 userSchema.methods = {
-    checkPassword: function(inputPassword) {
-        return bcrypt.compareSync(inputPassword, this.local.password)
+    verifyPassword: function(inputPassword) {
+        return bcrypt.compareSync(inputPassword, this.password)
     },
     hashPassword: plainTextPassword => {
         return bcrypt.hashSync(plainTextPassword, 10)
@@ -31,13 +25,14 @@ userSchema.methods = {
 }
 
 userSchema.pre('save', function(next) {
-    if (!this.local.password) {
+    if (!this.password) {
         console.log('No password');
         next();
     } else {
-        this.local.password = this.hashPassword(this.local.password);
+        this.password = this.hashPassword(this.password);
         next();
     }
 })
 
-mongoose.model('users', userSchema);
+const User = mongoose.model('users', userSchema);
+module.exports = User;

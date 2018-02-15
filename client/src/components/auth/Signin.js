@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import * as actions from '../../actions/';
 
 class Signin extends Component {
+    submit = (values) => {
+        console.log(values);
+    }
     render() {
         return (
             <div className="container">
-                <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
+                <form onSubmit={this.props.handleSubmit(this.submit)}>
                     <div className="form-group row">
                         <div className="col-md-4">
                             <label htmlFor="username">Username</label>
@@ -24,4 +28,4 @@ class Signin extends Component {
 export default reduxForm({
     form: 'signinForm',
     fields: ['username', 'password']
-})(Signin);
+}, null, actions)(Signin);
