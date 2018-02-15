@@ -24,22 +24,18 @@ app.use(
 app.use(bodyParser.json());
 
 // Sessions
-// app.use(
-//     session({
-//         secret: keys.SESSION_SECRET,
-//         resave: false,
-//         saveUninitialized: false
-//     })
-// );
+app.use(session({
+    secret: keys.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
 
 // Passport
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
-// app.use('/auth', auth);
-
-app.use('/auth', auth)
+app.use('/auth', auth);
 
 
 const PORT = process.env.PORT || 5000;

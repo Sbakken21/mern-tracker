@@ -4,11 +4,6 @@ const User = require('../models/User');
 const passport = require('../passport');
 
 // Route to get user info
-router.get('/test', (req,res) => {
-    res.send({ success: 'true' });
-})
-
-
 router.get('/user', (req,res, next) => {
     if (req.user) {
         return res.json({ user: req.user })
@@ -39,7 +34,7 @@ router.post('/signup', (req, res) => {
 
         newUser.save((err, savedUser) => {
             if (err) return res.json(err)
-            return res.json(newUser);
+            return res.json(savedUser);
         })
 
     })
@@ -49,10 +44,12 @@ router.post('/signup', (req, res) => {
 router.post(
     '/login',
     function(req, res, next) {
+        console.log(req.body);
         next()
     },
     passport.authenticate('local'),
     (req, res) => {
+        console.log('logged in', req.user);
         const userInfo = {
             username: req.user.username
         };
@@ -63,9 +60,9 @@ router.post(
 // Logout
 router.post('/logout', (req, res) => {
     if (req.user) {
-        res.send({ msg: 'logging out'})
+        res.send({ msg: 'logging out'});
     } else {
-        res.send({ msg: 'no user to log out'})
+        res.send({ msg: 'no user to log out'});
     }
 });
 

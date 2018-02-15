@@ -7,6 +7,7 @@ const strategy = new LocalStrategy(
             if (err) { return done(err); }
             if (!user) { return done(null, false); }
             if (!user.verifyPassword(password)) { return done(null, false); }
+            return done(null, user);
         });
     }
 );
