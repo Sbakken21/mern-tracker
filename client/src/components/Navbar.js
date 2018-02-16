@@ -21,7 +21,7 @@ class Navbar extends Component {
             default:
                 return (
                     <li className="nav-item">
-                        {/* uses "a" tag to assure redirect */}
+                        {/* uses "a" tag to assure redirect w/ proxy */}
                         <a href="/auth/logout" className="nav-link">Logout</a>
                     </li>
                 );
@@ -29,7 +29,6 @@ class Navbar extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <nav className="navbar navbar-expand-md navbar-dark bg-primary">
                 <div className="container">
