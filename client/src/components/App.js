@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Landing from './Landing';
 import About from './About';
 import Signin from './auth/Signin';
+import MainLogin from './auth/MainLogin';
 
 class App extends Component {
     // componentDidMount() {
@@ -21,7 +22,8 @@ class App extends Component {
                         <Navbar />
                         <Route exact path="/" component={Landing} />
                         <Route path="/about" component={About} />
-                        <Route path="/login" component={Signin} />
+                        <Route path="/signin" component={Signin} />
+                        <Route path="/login" component={MainLogin} />
                     </div>
                 </BrowserRouter>
             </div>
