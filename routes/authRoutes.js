@@ -4,12 +4,8 @@ const User = require('../models/User');
 const passport = require('../passport');
 
 // Route to get user info
-router.get('/user', (req,res, next) => {
-    if (req.user) {
-        return res.json({ user: req.user })
-    } else {
-        return res.json({ user: null })
-    }
+router.get('/user', (req, res) => {
+    res.send(req.user);
 });
 
 // Signup
@@ -38,18 +34,16 @@ router.post('/signup', (req, res) => {
         })
 
     })
-})
+});
 
 // Login
 router.post(
     '/login',
     function(req, res, next) {
-        console.log(req.body);
         next()
     },
     passport.authenticate('local'),
     (req, res) => {
-        console.log('logged in', req.user);
         const userInfo = {
             username: req.user.username
         };

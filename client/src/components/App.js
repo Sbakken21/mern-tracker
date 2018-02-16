@@ -9,6 +9,10 @@ import About from './About';
 import Signin from './auth/Signin';
 
 class App extends Component {
+    // componentDidMount() {
+    //     this.props.fetchUser();
+    // }
+
     render() {
         return (
             <div>
@@ -17,7 +21,7 @@ class App extends Component {
                         <Navbar />
                         <Route exact path="/" component={Landing} />
                         <Route path="/about" component={About} />
-                        <Route path="/signin" component={Signin} />
+                        <Route path="/login" component={Signin} />
                     </div>
                 </BrowserRouter>
             </div>
