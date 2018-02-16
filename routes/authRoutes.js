@@ -47,17 +47,13 @@ router.post(
         const userInfo = {
             username: req.user.username
         };
-        res.send(userInfo);
+        res.json(userInfo);
     }
 );
 
 // Logout
-router.post('/logout', (req, res) => {
-    if (req.user) {
-        res.send({ msg: 'logging out'});
-    } else {
-        res.send({ msg: 'no user to log out'});
-    }
+router.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
 });
-
 module.exports = router;

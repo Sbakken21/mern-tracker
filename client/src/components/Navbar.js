@@ -5,34 +5,31 @@ import * as actions from '../actions';
 
 class Navbar extends Component {
 
-    handleLogout() {
-        console.log('user has been logged out');
-        this.props.signoutUser(this.props.history);
-    }
-
     renderLinks() {
-        if (!this.props.authenticated) {
-            return [
-                <li className="nav-item" key='signup'>
-                    <Link to="/signup" className="nav-link">Sign Up</Link>
-                </li>,
-                <li className="nav-item" key='login'>
-                    <Link to="/login" className="nav-link">Login</Link>
-                </li>
-            ];
-        } else {
-            return [
-                <li className="nav-item" key='profile'>
-                    <Link to="/profile" className="nav-link">Profile</Link>
-                </li>,
-                <li className="nav-item" key='signout'>
-                    <Link to="/" onClick={this.handleLogout} className="nav-link">Sign Out</Link>
-                </li>
-            ];
+        switch (this.props.auth) {
+            case null:
+                return;
+            case false:
+                return [
+                    <li className="nav-item" key='login'>
+                        <Link to="/login" className="nav-link">Login</Link>
+                    </li>,
+                    <li className="nav-item" key='register'>
+                        <Link to="/register" className="nav-link">Register</Link>
+                    </li>
+                ];
+            default:
+                return (
+                    <li className="nav-item">
+                        {/* uses "a" tag to assure redirect */}
+                        <a href="/auth/logout" className="nav-link">Logout</a>
+                    </li>
+                );
         }
     }
 
     render() {
+        console.log(this.props);
         return (
             <nav className="navbar navbar-expand-md navbar-dark bg-primary">
                 <div className="container">
@@ -54,12 +51,6 @@ class Navbar extends Component {
                             </li>
                         </ul>
                         <ul className="navbar-nav ml-auto">
-                            {/* <li className="nav-item">
-                                <Link to="/signup" className="nav-link">Sign Up</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="/login" className="nav-link">Login</Link>
-                            </li> */}
                             {this.renderLinks()}
                         </ul>
                     </div>
@@ -70,10 +61,8 @@ class Navbar extends Component {
 }
 
 // Checks for user authentication
-function mapStateToProps(state) {
-    return {
-        authenticated: state.auth.authenticated
-    };
+function mapStateToProps({ auth }) {
+    return { auth };
 }
 
 export default withRouter(connect(mapStateToProps, actions)(Navbar));

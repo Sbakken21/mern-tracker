@@ -8,7 +8,6 @@ class Signin extends Component {
     
 
     handleFormSubmit({ username, password }) {
-        console.log(username, password);
         // Allow use of React-Router in actions
         this.props.signinUser({ username, password }, this.props.history);
     }
@@ -46,9 +45,9 @@ class Signin extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return { errorMessage: state.auth.error };
-}
+// function mapStateToProps(state) {
+//     return { errorMessage: state.auth.error };
+// }
 
 Signin = reduxForm({ form: 'signin', fields: ['username', 'password'] })(Signin);
-export default withRouter(connect(mapStateToProps, actions)(Signin));
+export default withRouter(connect(null, actions)(Signin));
