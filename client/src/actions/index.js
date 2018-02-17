@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { AUTH_USER, AUTH_ERROR } from './types';
 
-// Send user info and return route
+// Login and return route
 export const signinUser = ({ username, password }, history) => async dispatch => {
     try {
         const res = await axios.post('/auth/login', { username, password });
 
         history.push('/profile');
+        console.log(res.data.username);
         dispatch({ type: AUTH_USER, payload: res.data });
         
     } catch (error) {
@@ -24,8 +25,7 @@ export const fetchUser = () => async dispatch => {
 export const signupUser = ({ username, password }, history) => async dispatch => {
     const res = await axios.post('/auth/signup', { username, password });
     if (!res.data.error) {
-        history.push('/profile');
-        dispatch({ type: AUTH_USER, payload: res.data });
+        history.push('/login');
     } else {
         dispatch(authError(res.data.error));
     }
