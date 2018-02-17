@@ -45,9 +45,9 @@ class Signin extends Component {
     }
 }
 
-// function mapStateToProps(state) {
-//     return { errorMessage: state.auth.error };
-// }
+function mapStateToProps(state) {
+    return { errorMessage: state.authErr };
+}
 
-Signin = reduxForm({ form: 'signin', fields: ['username', 'password'] })(Signin);
-export default withRouter(connect(null, actions)(Signin));
+Signin = reduxForm({ form: 'signin' })(Signin);
+export default withRouter(connect(mapStateToProps, actions)(Signin));

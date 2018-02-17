@@ -2,18 +2,36 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-
+import { withRouter } from 'react-router-dom';
 import { renderField } from './RenderField';
 
 class Signup extends Component {
+
+    handleFormSubmit(values) {
+        // Call action creator to sign up user
+        this.props.signupUser(values, this.props.history);
+    }
+
+    renderAlert() {
+        if (this.props.errorMessage) {
+            return (
+                <div className="alert alert-danger">
+                    <strong>Oops!</strong> {this.props.errorMessage}
+                </div>
+            );
+        }
+    }
+
     render() {
         const { handleSubmit } = this.props;
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md-6">
+                        
                         <h2>Register</h2>
-                        <form onSubmit={handleSubmit}>
+                        {this.renderAlert()}
+                        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                             <Field
                                 name="username"
                                 type="text"
@@ -34,6 +52,7 @@ class Signup extends Component {
                                 component={renderField}
                                 label="Confirm Password"
                             />
+
                             <button type="submit" className="btn btn-success">Register</button>
                         </form>
                     </div>
@@ -41,7 +60,6 @@ class Signup extends Component {
             </div>
         );
     }
-    
 }
 
 // form validation
@@ -69,9 +87,12 @@ function validate(values) {
     return error;
 }
 
+function mapStateToProps(state) {
+    return { errorMessage: state.authErr };
+}
 
 Signup = reduxForm({ 
     validate,
     form: 'signup' 
 })(Signup);
-export default connect(null, actions)(Signup);
+export default withRouter(connect(mapStateToProps, actions)(Signup));

@@ -18,7 +18,7 @@ router.post('/signup', (req, res) => {
         // If a user with username already exists, return error
         if (existingUser) {
             return res.json({
-                error: `Username: ${username} is already registered`
+                error: `Username is already registered`
             });
         }
 

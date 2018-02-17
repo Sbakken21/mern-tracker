@@ -20,6 +20,17 @@ export const fetchUser = () => async dispatch => {
     dispatch({ type: AUTH_USER, payload: res.data });
 }
 
+// Register user and redirect 
+export const signupUser = ({ username, password }, history) => async dispatch => {
+    const res = await axios.post('/auth/signup', { username, password });
+    if (!res.data.error) {
+        history.push('/profile');
+        dispatch({ type: AUTH_USER, payload: res.data });
+    } else {
+        dispatch(authError(res.data.error));
+    }
+}
+
 // Error handling
 export function authError(error) {
     return {
