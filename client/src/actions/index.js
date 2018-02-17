@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER } from './types';
+import { AUTH_USER, AUTH_ERROR } from './types';
 
 // Send user info and return route
 export const signinUser = ({ username, password }, history) => async dispatch => {
