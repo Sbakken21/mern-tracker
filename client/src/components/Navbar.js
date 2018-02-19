@@ -32,7 +32,7 @@ class Navbar extends Component {
         return (
             <nav className="navbar navbar-expand-md navbar-dark bg-primary">
                 <div className="container">
-                    <Link to="/" className="navbar-brand" >MERN TV Tracker</Link>
+                    <Link to="/" className="navbar-brand" >MERN</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

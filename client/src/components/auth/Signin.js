@@ -26,6 +26,7 @@ class Signin extends Component {
 
         return (
             <div className="container">
+                <h2>Login</h2>
                 <form onSubmit={this.props.handleSubmit(this.handleFormSubmit.bind(this))}>
                 {this.renderAlert()}
                     <div className="form-group row">

@@ -5,6 +5,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 const auth = require('./routes/authRoutes');
+const task = require('./routes/taskRoutes');
 const passport = require('./passport');
 
 // DB connection
@@ -36,6 +37,7 @@ app.use(passport.session());
 
 // Routes
 app.use('/auth', auth);
+app.use('/task', task);
 
 // Production Environment - use appropriate routes
 if (process.env.NODE_ENV === 'production') {

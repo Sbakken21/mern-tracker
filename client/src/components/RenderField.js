@@ -1,4 +1,5 @@
-// Form rendering for signup
+// Form rendering
+
 import React from 'react';
 
 const renderField = ({ input, label, desc, type, meta: { touched, error } }) => (

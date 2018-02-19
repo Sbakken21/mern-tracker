@@ -1,3 +1,5 @@
+// Router for authentication
+
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
@@ -6,6 +8,7 @@ const passport = require('../passport');
 // Route to get user info
 router.get('/user', (req, res) => {
     res.send(req.user);
+    console.log(req.user);
 });
 
 // Signup
@@ -29,7 +32,7 @@ router.post('/signup', (req, res) => {
         });
 
         newUser.save((err, savedUser) => {
-            if (err) return res.json(err)
+            if (err) return res.json(err);
             return res.json(savedUser);
         })
 
@@ -56,4 +59,5 @@ router.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
 });
+
 module.exports = router;

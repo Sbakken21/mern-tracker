@@ -38,3 +38,14 @@ export function authError(error) {
         payload: error
     };
 }
+
+// Task actions
+// Submit task
+export const submitTask = (values, history) => async dispatch => {
+    try {
+        await axios.post ('/task/create', values);
+        history.push('/profile');
+    } catch (error) {
+        console.log(error);
+    }
+};
