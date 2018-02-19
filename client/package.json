@@ -19,5 +19,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": {
+    "/auth/*": {
+      "target": "http://localhost:5000"
+    },
+    "/task/*": {
+      "target": "http://localhost:5000"
+    }
+  }
 }

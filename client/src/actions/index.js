@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, AUTH_ERROR, FETCH_TASKS } from './types';
 
 // Login and return route
 export const signinUser = ({ username, password }, history) => async dispatch => {
@@ -48,4 +48,11 @@ export const submitTask = (values, history) => async dispatch => {
     } catch (error) {
         console.log(error);
     }
+};
+
+// Get all of user's tasks
+export const fetchTasks = () => async dispatch => {
+    const res = await axios.get('/task/list');
+
+    dispatch({ type: FETCH_TASKS, payload: res.data });
 };
