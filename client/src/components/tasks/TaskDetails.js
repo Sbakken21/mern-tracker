@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchDetails } from '../../actions';
 
@@ -8,14 +9,22 @@ class TaskDetails extends Component {
         this.props.fetchDetails(this.props.match.params.id);  
     }
 
-    render() {
-         
-        
-        // // Convert array of objects into single object
+    renderContent() {
+        // Convert array of objects into single object
         const task = this.props.tasks[0] || [];
-            
-        return (
-            <div className="container">
+        switch(this.props.auth) {
+            case null:
+                return;
+            case false:
+                return (
+                    <div className="center-align">
+                        <h4>YOU MUST BE LOGGED IN TO VIEW THIS PAGE</h4>
+                        <Link to='/login'><button className="btn deep-orange">Go to login</button></Link>
+                        <Link to='/register'><button className="btn">Create an account</button></Link>
+                    </div>
+                );
+            default:
+            return (
                 <div className= "row">
                     <h2 className="center-align">{task.subject || 'N/A'}</h2>
                     <div className="card grey darken-4">
@@ -32,15 +41,26 @@ class TaskDetails extends Component {
                             <h5>Project Description: <span className="task-data">{task.description || 'N/A'}</span></h5>
                         </div>
                     </div>
+                    <Link to="/profile">
+                        <button className="btn red">Back to profile</button>
+                    </Link>
                 </div>
+            );
                 
+        }
+    }
+
+    render() {
+        return (
+            <div className="container">
+                {this.renderContent()}
             </div>
         );
     }
 }
 
-function mapDispatchToProps({ tasks }) {
-    return { tasks };
+function mapDispatchToProps({ tasks, auth }) {
+    return { tasks, auth };
 }
 
 
