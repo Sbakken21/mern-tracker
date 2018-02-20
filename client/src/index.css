@@ -42,3 +42,7 @@ input {
 .card-action {
     word-wrap: break-word;
 }
+
+.task-data {
+    font-size: 14px;
+}
