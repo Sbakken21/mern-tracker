@@ -15,7 +15,7 @@ class Signup extends Component {
     renderAlert() {
         if (this.props.errorMessage) {
             return (
-                <div className="alert alert-danger">
+                <div className="card-panel red lighten-1 center-align">
                     <strong>Oops!</strong> {this.props.errorMessage}
                 </div>
             );
@@ -26,36 +26,50 @@ class Signup extends Component {
         const { handleSubmit } = this.props;
         return (
             <div className="container">
+                
                 <div className="row">
-                    <div className="col-md-6">
+                    
+                    
+                    <form className="col s12" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                        <div className="row">
+                            <div className="col s6">
+                                <h2>Register</h2>
+                                {this.renderAlert()}
+                            </div>
+                        </div>
                         
-                        <h2>Register</h2>
-                        {this.renderAlert()}
-                        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-                            <Field
-                                name="username"
-                                type="text"
-                                component={renderField}
-                                label="Username"
-                            />
-
-                            <Field
-                                name="password"
-                                type="password"
-                                component={renderField}
-                                label="Password"
-                            />
-
-                            <Field
-                                name="confirmPassword"
-                                type="password"
-                                component={renderField}
-                                label="Confirm Password"
-                            />
-
-                            <button type="submit" className="btn btn-success">Register</button>
-                        </form>
-                    </div>
+                        <div className="row">                          
+                                <Field
+                                    name="username"
+                                    type="text"
+                                    component={renderField}
+                                    label="Username"
+                                />                      
+                        </div>
+                        <div className="row">
+                            
+                                <Field
+                                    name="password"
+                                    type="password"
+                                    component={renderField}
+                                    label="Password"
+                                />                   
+                        </div>
+                        <div className="row">
+                           
+                                <Field
+                                    name="confirmPassword"
+                                    type="password"
+                                    component={renderField}
+                                    label="Confirm Password"
+                                />
+                        </div>
+                        <div className="row">
+                            <div className="col s6">
+                                <button type="submit" className="btn deep-orange">Register</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         );

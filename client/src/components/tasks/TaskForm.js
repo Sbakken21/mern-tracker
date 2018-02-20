@@ -16,7 +16,7 @@ class TaskForm extends Component {
     render() {
         return (
             <div className="container">
-                <form onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}>
+                <form className="col s6" onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}>
                     <Field
                         name="clientName"
                         type="text"
@@ -52,7 +52,6 @@ class TaskForm extends Component {
                         <button className="btn btn-danger mx-auto">Back to profile</button>
                     </Link>
                 </form>
-
             </div>
         );
     }

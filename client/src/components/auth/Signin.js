@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class Signin extends Component {
     
@@ -15,7 +15,7 @@ class Signin extends Component {
     renderAlert() {
         if (this.props.errorMessage) {
             return (
-                <div className="text-center alert alert-danger my-2">
+                <div className="card-panel red lighten-1 center-align">
                     <strong>Oops an error occured: </strong> {this.props.errorMessage}
                 </div>
             );
@@ -26,22 +26,37 @@ class Signin extends Component {
 
         return (
             <div className="container">
-                <h2>Login</h2>
-                <form onSubmit={this.props.handleSubmit(this.handleFormSubmit.bind(this))}>
-                {this.renderAlert()}
-                    <div className="form-group row">
-                        
-                        <div className="col-md-4">
-                        
-                            <label htmlFor="username">Username</label>
-                            <Field className="form-control" type="text" name="username" component="input" />
-                            <label htmlFor="password">Password</label>
-                            <Field className="form-control" type="password" name="password" component="input" />
+                
+                <form className="col s12" onSubmit={this.props.handleSubmit(this.handleFormSubmit.bind(this))}>
+                <div className="row">
+                    <div className="col s6">
+                        <h2>Login</h2>
+                        {this.renderAlert()}
+                    </div>
+                </div>
+                
+                    <div className="row">                    
+                        <div className="input-field col s6">
+                            
+                            <Field placeholder="Username" type="text" name="username" component="input" />
                         </div>
                     </div>
-                    <button className="btn btn-primary" type="submit">Login</button>
+                    <div className="row"> 
+                        
+                        <div className="input-field col s6">
+                            <Field placeholder="Password" type="password" name="password" component="input" /> 
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col s6">
+                            <button className="btn deep-orange waves-effect waves-light" type="submit">Login</button>
+                            <span className="right">Don't have an account?<Link to="/register"> Register</Link></span>
+                        </div>
+                    </div>
                 </form>
             </div>
+
+            
         );
     }
 }

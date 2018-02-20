@@ -17,7 +17,7 @@ class Profile extends Component {
             default:
                 return (
                     <div>
-                        <h1>Profile</h1>
+                        <h1>Tasks</h1>
                         <div>
                             <Link to="/task/create">
                                 <button className="btn btn-primary">Add Task</button>

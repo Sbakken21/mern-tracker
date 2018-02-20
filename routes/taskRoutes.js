@@ -32,4 +32,11 @@ router.get('/list', requireLogin, async (req, res) => {
     res.send(tasks);
 });
 
+// Delete selected task
+router.delete('/list/:id', requireLogin, async (req, res) => {
+    const task = await Task.findByIdAndRemove({ _id : req.params.id });
+
+    res.send(task);
+});
+
 module.exports = router;

@@ -11,16 +11,17 @@ class Navbar extends Component {
                 return;
             case false:
                 return [
-                    <li className="nav-item" key='login'>
-                        <Link to="/login" className="nav-link">Login</Link>
+                    <li className="deep-orange nav-login" key='login'>
+                        <Link to="/login">Login</Link>
                     </li>,
-                    <li className="nav-item" key='register'>
-                        <Link to="/register" className="nav-link">Register</Link>
+                    <li key='register'>
+                        <Link to="/register">Register</Link>
                     </li>
                 ];
+               
             default:
                 return (
-                    <li className="nav-item">
+                    <li>
                         {/* uses "a" tag to assure redirect w/ proxy */}
                         <a href="/auth/logout" className="nav-link">Logout</a>
                     </li>
@@ -30,29 +31,24 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-md navbar-dark bg-primary">
-                <div className="container">
-                    <Link to="/" className="navbar-brand">MERN</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div className="collapse navbar-collapse" id="navbarColor01">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <Link to="/" className="nav-link">Home</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="/about" className="nav-link">About</Link>
-                            </li>
-                        </ul>
-                        <ul className="navbar-nav ml-auto">
-                            {this.renderLinks()}
-                        </ul>
-                    </div>
+            <nav>
+                <div className="nav-wrapper">
+                    <Link to="/" className="brand-logo">FTrak</Link>
+                    <ul className="left hide-on-med-and-down left-item">
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">About</Link>
+                        </li>
+                    </ul>
+                    <ul className="right">
+                        {this.renderLinks()}
+                    </ul>
                 </div>
             </nav>
         );
+
     }
 }
 

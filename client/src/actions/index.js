@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR, FETCH_TASKS } from './types';
+import { AUTH_USER, AUTH_ERROR, FETCH_TASKS, DELETE_TASK } from './types';
 
 // Login and return route
 export const signinUser = ({ username, password }, history) => async dispatch => {
@@ -56,3 +56,11 @@ export const fetchTasks = () => async dispatch => {
 
     dispatch({ type: FETCH_TASKS, payload: res.data });
 };
+
+// Delete selected task
+export const deleteTask = (id, history) => async dispatch => {
+    const res = await axios.delete(`/task/list/${id}`)
+
+    history.push('/profile');
+    dispatch({ type: DELETE_TASK, payload: res.data });
+}
