@@ -26,3 +26,15 @@ nav :hover {
 .delete-action {
     cursor: pointer;
 }
+
+.task-list-row {
+
+}
+
+.back-btn {
+    margin-left: 50px;
+}
+
+input {
+    color: #fff;
+}

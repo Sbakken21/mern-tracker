@@ -10,21 +10,27 @@ class Profile extends Component {
                 return;
             case false:
                 return (
-                    <div>
+                    <div className="center-align">
                         <h4>YOU MUST BE LOGGED IN TO VIEW THIS PAGE</h4>
+                        <Link to='/login'><button className="btn deep-orange">Go to login</button></Link>
+                        <Link to='/register'><button className="btn">Create an account</button></Link>
                     </div>
                 );
             default:
                 return (
                     <div>
-                        <h1>Tasks</h1>
-                        <div>
-                            <Link to="/task/create">
-                                <button className="btn btn-primary">Add Task</button>
-                            </Link>
-                            <div>
-                                <TaskList />
+                        <div className="container">
+                            <div className="row">
+                                <div className="col s12 m8 offset-m2">
+                                    <h1>Freelance Jobs/Clients</h1>
+                                <span><Link to="/create">
+                                    <button className="btn deep-orange">Add Job</button>
+                                </Link></span>
+                                </div>
                             </div>
+                        </div>
+                        <div className="container">
+                            <TaskList />
                         </div>
                     </div>
 

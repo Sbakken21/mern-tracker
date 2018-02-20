@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR, FETCH_TASKS, DELETE_TASK } from './types';
+import { AUTH_USER, AUTH_ERROR, FETCH_TASKS, FETCH_DETAILS, DELETE_TASK } from './types';
 
 // Login and return route
 export const signinUser = ({ username, password }, history) => async dispatch => {
@@ -56,6 +56,13 @@ export const fetchTasks = () => async dispatch => {
 
     dispatch({ type: FETCH_TASKS, payload: res.data });
 };
+
+// Get details of specific user task
+export const fetchDetails = (id) => async dispatch => {
+    const res = await axios.get(`/task/details/${id}`);
+
+    dispatch({ type: FETCH_DETAILS, payload: res.data });
+}
 
 // Delete selected task
 export const deleteTask = (id, history) => async dispatch => {

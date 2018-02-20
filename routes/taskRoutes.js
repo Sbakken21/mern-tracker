@@ -32,6 +32,14 @@ router.get('/list', requireLogin, async (req, res) => {
     res.send(tasks);
 });
 
+// Show details task
+router.get('/details/:id', async (req, res) => {
+    const task = await Task.find({ _id : req.params.id });
+
+    // Convert array of objects into single object for React
+    res.send(task);
+})
+
 // Delete selected task
 router.delete('/list/:id', requireLogin, async (req, res) => {
     const task = await Task.findByIdAndRemove({ _id : req.params.id });

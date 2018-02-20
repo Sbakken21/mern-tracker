@@ -12,6 +12,7 @@ import Signin from './auth/Signin';
 import Signup from './auth/Signup';
 import Profile from './Profile';
 import TaskNew from './tasks/TaskNew';
+import TaskDetails from './tasks/TaskDetails';
 
 class App extends Component {
     // make request for user info
@@ -30,7 +31,8 @@ class App extends Component {
                         <Route path="/login" component={Signin} />
                         <Route path="/register" component={Signup} />
                         <Route path="/profile" component={Profile} />
-                        <Route path="/task/create" component={TaskNew} />
+                        <Route path="/create" component={TaskNew} />
+                        <Route path="/details/:id" component={TaskDetails} />
                     </div>
                 </BrowserRouter>
             </div>

@@ -25,7 +25,7 @@ class TaskForm extends Component {
                     />
                     <Field
                         name="clientPhone"
-                        type="phone"
+                        type="text"
                         component={renderField}
                         label="Client Phone"
                     />
@@ -43,13 +43,13 @@ class TaskForm extends Component {
                     />
                     <Field
                         name="description"
-                        type="textarea"
+                        type="text"
                         component= {renderField}
                         label="Description"
                     />
                     <button type="submit" className="btn btn-success">Submit</button>
                     <Link to="/profile">
-                        <button className="btn btn-danger mx-auto">Back to profile</button>
+                        <button className="back-btn btn red">Back to profile</button>
                     </Link>
                 </form>
             </div>

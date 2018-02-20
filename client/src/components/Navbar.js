@@ -20,12 +20,15 @@ class Navbar extends Component {
                 ];
                
             default:
-                return (
+                return [
+                    <li>
+                        <Link to="/profile" className="nav-link">Profile</Link>
+                    </li>,
                     <li>
                         {/* uses "a" tag to assure redirect w/ proxy */}
-                        <a href="/auth/logout" className="nav-link">Logout</a>
+                        <a href="/auth/logout" className="nav-link">Logout</a> 
                     </li>
-                );
+                ];
         }
     }
 
