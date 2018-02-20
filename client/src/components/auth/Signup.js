@@ -7,6 +7,11 @@ import { renderField } from '../RenderField';
 
 class Signup extends Component {
 
+    componentWillMount() {
+        // set default error state to null
+        this.props.authClear();
+    }
+
     handleFormSubmit(values) {
         // Call action creator to sign up user
         this.props.signupUser(values, this.props.history);

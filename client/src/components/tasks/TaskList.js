@@ -19,7 +19,7 @@ class TaskList extends Component {
                                 {task.clientName}
                             </div>
                             <div className="card-action">
-                                <Link to={`/details/${task._id}`} >Details</Link>
+                                <Link to={`/details/${task._id}`}>Details</Link>
                                 <a className="delete-action right" onClick={()=> this.props.deleteTask(task._id, this.props.history)}>
                                     Delete
                                 </a>

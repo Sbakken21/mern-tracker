@@ -5,6 +5,12 @@ import * as actions from '../../actions/';
 import { withRouter, Link } from 'react-router-dom';
 
 class Signin extends Component {
+
+    componentWillMount () {
+        // set default error state to null
+        this.props.authClear();
+    }
+
     
 
     handleFormSubmit({ username, password }) {

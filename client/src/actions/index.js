@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR, FETCH_TASKS, FETCH_DETAILS, DELETE_TASK } from './types';
+import { AUTH_USER, AUTH_ERROR, AUTH_CLEAR, FETCH_TASKS, FETCH_DETAILS, DELETE_TASK } from './types';
 
 // Login and return route
 export const signinUser = ({ username, password }, history) => async dispatch => {
@@ -33,10 +33,12 @@ export const signupUser = ({ username, password }, history) => async dispatch =>
 
 // Error handling
 export function authError(error) {
-    return {
-        type: AUTH_ERROR,
-        payload: error
-    };
+    return { type: AUTH_ERROR, payload: error };
+}
+
+// Clear error handling message
+export function authClear() {
+    return {type: AUTH_CLEAR, payload: null};
 }
 
 // Task actions

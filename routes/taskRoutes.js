@@ -33,10 +33,9 @@ router.get('/list', requireLogin, async (req, res) => {
 });
 
 // Show details task
-router.get('/details/:id', async (req, res) => {
+router.get('/details/:id', requireLogin, async (req, res) => {
     const task = await Task.find({ _id : req.params.id });
 
-    // Convert array of objects into single object for React
     res.send(task);
 })
 

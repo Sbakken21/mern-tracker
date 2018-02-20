@@ -38,3 +38,7 @@ nav :hover {
 input {
     color: #fff;
 }
+
+.card-action {
+    word-wrap: break-word;
+}

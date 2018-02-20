@@ -4,25 +4,25 @@ import { fetchDetails } from '../../actions';
 
 class TaskDetails extends Component {
 
-    // componentWillMount() {
-    //     this.props.fetchDetails(this.props.match.params.id);
-        
-    // } 
+    componentDidMount() {
+        this.props.fetchDetails(this.props.match.params.id);  
+    }
 
     render() {
          
-        const { task } = this.props;
-
-        // const task = this.props.tasks[0]
+        
+        // // Convert array of objects into single object
+        const task = this.props.tasks[0] || [];
             
         return (
             <div className="container">
                 <div className= "row">
-                    <h2 className="center-align">{task.subject || 'NA'}</h2>
+                {console.log(this.props.match.params.id)}
+                {console.log(task.clientName)}
+                    <h2 className="center-align">{task.subject || 'N/A'}</h2>
                     <div className="card grey darken-4">
                         <div className="card-action">
-                            <h3>Client:</h3> 
-                            <h6 className="right">{task.clientName || 'N/A'}</h6>
+                            <h3>Client: <span>{task.clientName || 'N/A'}</span></h3> 
                         </div>
                         <div className="card-action">
                             <h5>Client Phone: {task.clientPhone || 'N/A'}</h5>
@@ -31,7 +31,7 @@ class TaskDetails extends Component {
                             <h5>Client Email: {task.clientEmail || 'N/A'}</h5>
                         </div>
                         <div className="card-action">
-                            <h5>Project Description: {task.description || 'N/A'}</h5>
+                            <h5>Project Description: {task.description || 'This is a super long description. I am testing out to see if this will work in the long run and how it will render. here comes letters aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.'}</h5>
                         </div>
                     </div>
                 </div>
@@ -41,10 +41,10 @@ class TaskDetails extends Component {
     }
 }
 
-function mapStateToProps(state, ownProps) {
-    return { task: state.tasks[ownProps.match.params.id] };
+function mapDispatchToProps({ tasks }) {
+    return { tasks };
 }
 
 
 
-export default connect(mapStateToProps, { fetchDetails })(TaskDetails);
+export default connect(mapDispatchToProps, { fetchDetails })(TaskDetails);

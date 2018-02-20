@@ -18,6 +18,12 @@ class TaskForm extends Component {
             <div className="container">
                 <form className="col s6" onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}>
                     <Field
+                        name="subject"
+                        type="text"
+                        component={renderField}
+                        label="Task Title*"
+                    />
+                    <Field
                         name="clientName"
                         type="text"
                         component={renderField}
@@ -35,12 +41,7 @@ class TaskForm extends Component {
                         component={renderField}
                         label="Client Email"
                     />
-                    <Field
-                        name="subject"
-                        type="text"
-                        component={renderField}
-                        label="Task Title*"
-                    />
+                    
                     <Field
                         name="description"
                         type="text"
@@ -81,11 +82,6 @@ function validate(values) {
     console.log(errors.clientPhone)
     return errors;
 }
-
-// export default reduxForm({
-//     validate,
-//     form: 'taskForm'
-// })(TaskForm);
 
 TaskForm = reduxForm({ validate, form: 'taskForm'})(TaskForm);
 export default connect(null, actions)(withRouter(TaskForm));
