@@ -24,25 +24,20 @@ app.use(
 
 app.use(bodyParser.json());
 
-// Sessions
-app.use(session({
+// session variable
+const sess = {
     secret: keys.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false
-}));
-
-// Passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Routes
-app.use('/auth', auth);
-app.use('/task', task);
+    saveUninitialized: false,
+    cookie: {}
+}
 
 // Production Environment - use appropriate routes
 if (process.env.NODE_ENV === 'production') {
-
-    app.proxy = true;
+    // trust first proxy
+    app.set('trust proxy', 1)
+    //serve secure cookies
+    sess.cookie.secure = true
     
     app.use(express.static('client/build'));
 
@@ -51,6 +46,17 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
+
+// Session
+app.use(session(sess));
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
+app.use('/auth', auth);
+app.use('/task', task);
 
 
 const PORT = process.env.PORT || 5000;
