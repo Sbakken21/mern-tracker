@@ -33,8 +33,9 @@ router.get('/list', requireLogin, async (req, res) => {
 });
 
 // Show details task
-router.get('/details/:id', requireLogin, async (req, res) => {
-    const task = await Task.find({ _id : req.params.id });
+router.get('/details/:id', requireLogin, async (req, res) => {                  
+    // checks db for selected task & if current user is the same as the user who made the task              
+    const task = await Task.find({ _id : req.params.id, _user : req.user.id }); 
 
     res.send(task);
 })

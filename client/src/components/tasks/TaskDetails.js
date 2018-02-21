@@ -12,6 +12,7 @@ class TaskDetails extends Component {
     renderContent() {
         // Convert array of objects into single object
         const task = this.props.tasks[0] || [];
+
         switch(this.props.auth) {
             case null:
                 return;
@@ -24,29 +25,28 @@ class TaskDetails extends Component {
                     </div>
                 );
             default:
-            return (
-                <div className= "row">
-                    <h2 className="center-align">{task.subject || 'N/A'}</h2>
-                    <div className="card grey darken-4">
-                        <div className="card-action">
-                            <h5>Client: <span className="task-data">{task.clientName || 'N/A'}</span></h5>
+                return (
+                    <div className= "row">
+                        <h2 className="center-align">{task.subject || 'N/A'}</h2>
+                        <div className="card grey darken-4">
+                            <div className="card-action">
+                                <h5>Client: <span className="task-data">{task.clientName || 'N/A'}</span></h5>
+                            </div>
+                            <div className="card-action">
+                                <h5>Client Phone: <span className="task-data">{task.clientPhone || 'N/A'}</span></h5>
+                            </div>
+                            <div className="card-action">
+                                <h5>Client Email: <span className="task-data">{task.clientEmail || 'N/A'}</span></h5>
+                            </div>
+                            <div className="card-action">
+                                <h5>Project Description: <span className="task-data">{task.description || 'N/A'}</span></h5>
+                            </div>
                         </div>
-                        <div className="card-action">
-                            <h5>Client Phone: <span className="task-data">{task.clientPhone || 'N/A'}</span></h5>
-                        </div>
-                        <div className="card-action">
-                            <h5>Client Email: <span className="task-data">{task.clientEmail || 'N/A'}</span></h5>
-                        </div>
-                        <div className="card-action">
-                            <h5>Project Description: <span className="task-data">{task.description || 'N/A'}</span></h5>
-                        </div>
+                        <Link to="/profile">
+                            <button className="btn red">Back to profile</button>
+                        </Link>
                     </div>
-                    <Link to="/profile">
-                        <button className="btn red">Back to profile</button>
-                    </Link>
-                </div>
-            );
-                
+                );            
         }
     }
 
