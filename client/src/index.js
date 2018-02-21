@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import 'materialize-css/dist/css/materialize.min.css';
 
-import registerServiceWorker from './registerServiceWorker';
+import { unregister } from './registerServiceWorker';
 
 import App from './components/App';
 import reducers from './reducers';
@@ -17,4 +17,6 @@ ReactDOM.render(
         <App />
     </Provider>, document.querySelector('#root')
 );
-registerServiceWorker();
+
+// Un-register Service Worker
+unregister();
