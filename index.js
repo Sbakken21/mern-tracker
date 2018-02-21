@@ -41,6 +41,8 @@ app.use('/task', task);
 
 // Production Environment - use appropriate routes
 if (process.env.NODE_ENV === 'production') {
+
+    app.proxy = true;
     
     app.use(express.static('client/build'));
 
