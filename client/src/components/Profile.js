@@ -24,7 +24,7 @@ class Profile extends Component {
                                 <div className="col s12 m8 offset-m2">
                                     <h1>Freelance Jobs/Clients</h1>
                                 <span><Link to="/create">
-                                    <button className="btn deep-orange">Add Job</button>
+                                    <button className="btn deep-orange"><i class="large material-icons">add</i> <span>Add Job</span></button>
                                 </Link></span>
                                 </div>
                             </div>

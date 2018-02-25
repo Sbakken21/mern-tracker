@@ -2,6 +2,12 @@ body {
     background: #212121;
     color: #fff;
 }
+
+.material-icons {
+    display: inline-flex;
+    vertical-align: top;
+}
+
 nav {
     background-color: #212121;
     padding: 0 10px 0 10px;
