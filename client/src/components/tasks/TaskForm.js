@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { reduxForm, Field } from 'redux-form';
 import { renderField } from '../RenderField';
+import { renderDatePicker } from '../RenderDatePicker';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
@@ -48,6 +49,21 @@ class TaskForm extends Component {
                         component= {renderField}
                         label="Description"
                     />
+
+                    <Field
+                        name="beginDate"
+                        text="text"
+                        component= {renderDatePicker}
+                        label="Begin Date"
+                    />
+
+                    <Field
+                        name="expectedDate"
+                        text="text"
+                        component= {renderDatePicker}
+                        label="Expected/Due Date"
+                    />
+
                     <button type="submit" className="btn btn-success">Submit</button>
                     <Link to="/profile">
                         <button className="back-btn btn red">Back to profile</button>

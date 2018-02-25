@@ -7,7 +7,7 @@ const requireLogin = require('../middlewares/requireLogin');
 
 // Route to create task
 router.post('/create', requireLogin, (req, res) => {
-    const { clientName, clientPhone, clientEmail, subject, description } = req.body;
+    const { clientName, clientPhone, clientEmail, subject, description, beginDate, expectedDate } = req.body;
 
     const task = new Task ({
         clientName,
@@ -15,6 +15,8 @@ router.post('/create', requireLogin, (req, res) => {
         clientEmail,
         subject,
         description,
+        beginDate,
+        expectedDate,
         _user: req.user.id
     });
 
@@ -27,7 +29,7 @@ router.post('/create', requireLogin, (req, res) => {
 // Show all tasks
 router.get('/list', requireLogin, async (req, res) => {
     const tasks = await Task.find({ _user: req.user.id })
-        .select({ clientName: true, subject: true });
+        .select({ clientName: true, subject: true, beginDate: true, expectedDate: true });
 
     res.send(tasks);
 });

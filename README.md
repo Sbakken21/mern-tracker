@@ -30,5 +30,6 @@ Rename `example.dev.js` to `dev.js` and input the appropriate variable values:
 
 ### Todo
 - Add confirm modal for deleting tasks
+- Add dates for when task is created
 - Add edit feature for tasks
 - Add OAuth for Google and GitHub

@@ -7,6 +7,8 @@ const taskSchema = new Schema ({
     clientEmail: String,
     subject: String,
     description: String,
+    beginDate: String,
+    expectedDate: String,
     _user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 

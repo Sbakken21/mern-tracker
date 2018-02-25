@@ -41,6 +41,12 @@ class TaskDetails extends Component {
                             <div className="card-action">
                                 <h5>Project Description: <span className="task-data">{task.description || 'N/A'}</span></h5>
                             </div>
+                            <div className="card-action">
+                                <h5>Started: <span className="task-data">{task.beginDate || 'N/A'}</span></h5>
+                            </div>
+                            <div className="card-action">
+                                <h5>Expected: <span className="task-data">{task.expectedDate || 'N/A'}</span></h5>
+                            </div>
                         </div>
                         <Link to="/profile">
                             <button className="btn red">Back to profile</button>

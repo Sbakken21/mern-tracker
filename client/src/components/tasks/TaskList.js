@@ -15,13 +15,17 @@ class TaskList extends Component {
                     <div className=" col s12 m8 offset-m2"> 
                         <div className="card grey darken-4">
                             <div className="card-content">
+                                {(task.beginDate) ? <span className="right grey-text">Begin: {task.beginDate}</span> : null}
                                 <span className="card-title">{task.subject}</span>
+                                {(task.expectedDate) ? <span className="right grey-text">Expected: {task.expectedDate}</span> : null}
+                                
                                 {task.clientName}
+                                
                             </div>
                             <div className="card-action">
                                 <Link to={`/details/${task._id}`}>Details</Link>
                                 <a className="delete-action right" onClick={()=> this.props.deleteTask(task._id, this.props.history)}>
-                                    Delete
+                                    <span>Delete</span>
                                 </a>
                             </div>
                         </div>
