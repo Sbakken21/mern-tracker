@@ -26,10 +26,9 @@ NODE_ENV=production
 
 Rename `example.dev.js` to `dev.js` and input the appropriate variable values:
 `MongoURI` requires a connection to a mongoDB such as [mLab](https://mlab.com/).
-`SESSION_SECRET` is the key used to compute the hash for [express-session].(https://www.npmjs.com/package/express-session)
+`SESSION_SECRET` is the key used to compute the hash for [express-session](https://www.npmjs.com/package/express-session).
 
 ### Todo
 - Add confirm modal for deleting tasks
-- Add dates for when task is created
 - Add edit feature for tasks
 - Add OAuth for Google and GitHub
