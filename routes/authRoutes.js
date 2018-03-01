@@ -4,6 +4,9 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const passport = require('../passport');
+const crypto = require('crypto');
+const Mailer = require('../middlewares/Mailer');
+const resetTemplate = require('../middlewares/emailTemplates/resetTemplate');
 
 // Route to get user info
 router.get('/user', (req, res) => {
@@ -53,6 +56,17 @@ router.post(
         res.json(userInfo);
     }
 );
+
+// Forgot password
+router.post('/forgot', (req, res) => {
+
+    // Send email
+    const mailer = new Mailer(req.body.email, resetTemplate());
+    mailer.send();
+
+
+    res.send(req.body);
+});
 
 // Logout
 router.get('/logout', (req, res) => {

@@ -52,6 +52,15 @@ class Signup extends Component {
                                 />                      
                         </div>
                         <div className="row">
+                           
+                                <Field
+                                    name="email"
+                                    type="text"
+                                    component={renderField}
+                                    label="Email"
+                                />
+                        </div>
+                        <div className="row">
                             
                                 <Field
                                     name="password"

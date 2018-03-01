@@ -9,10 +9,17 @@ const userSchema = new Schema ({
         unique: true,
         lowercase: true
     },
+    email: {
+        type: String,
+        lowercase: true
+    },
     password: {
         type: String,
         required: true
-    }
+    },
+    // Password reset
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
 });
 
 userSchema.methods = {

@@ -10,6 +10,7 @@ import Landing from './Landing';
 import About from './About';
 import Signin from './auth/Signin';
 import Signup from './auth/Signup';
+import Forgot from './auth/Forgot';
 import Profile from './Profile';
 import TaskNew from './tasks/TaskNew';
 import TaskDetails from './tasks/TaskDetails';
@@ -30,6 +31,7 @@ class App extends Component {
                         <Route path="/about" component={About} />
                         <Route path="/login" component={Signin} />
                         <Route path="/register" component={Signup} />
+                        <Route path="/forgot" component={Forgot} />
                         <Route path="/profile" component={Profile} />
                         <Route path="/create" component={TaskNew} />
                         <Route path="/details/:id" component={TaskDetails} />
