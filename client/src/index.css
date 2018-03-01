@@ -45,6 +45,18 @@ input {
     word-wrap: break-word;
 }
 
-.task-data {
-    font-size: 14px;
+.details-info {
+    margin-top: 50px;
+}
+
+.description {
+    word-wrap: break-word;
+}
+
+.card-title {
+    font-size: 50px;
+}
+
+.client-list {
+    margin-left: 25px;
 }

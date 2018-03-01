@@ -26,31 +26,53 @@ class TaskDetails extends Component {
                 );
             default:
                 return (
-                    <div className= "row">
-                        <h2 className="center-align">{task.subject || 'N/A'}</h2>
-                        <div className="card grey darken-4">
-                            <div className="card-action">
-                                <h5>Client: <span className="task-data">{task.clientName || 'N/A'}</span></h5>
-                            </div>
-                            <div className="card-action">
-                                <h5>Client Phone: <span className="task-data">{task.clientPhone || 'N/A'}</span></h5>
-                            </div>
-                            <div className="card-action">
-                                <h5>Client Email: <span className="task-data">{task.clientEmail || 'N/A'}</span></h5>
-                            </div>
-                            <div className="card-action">
-                                <h5>Project Description: <span className="task-data">{task.description || 'N/A'}</span></h5>
-                            </div>
-                            <div className="card-action">
-                                <h5>Started: <span className="task-data">{task.beginDate || 'N/A'}</span></h5>
-                            </div>
-                            <div className="card-action">
-                                <h5>Expected: <span className="task-data">{task.expectedDate || 'N/A'}</span></h5>
-                            </div>
+                    <div className="row details-info">
+                        <div className="col s8 offset-s2">
+                        <div className= "row details-header">
+                            <h2>{task.subject || ''}</h2>
+                            <div className="divider deep-orange"></div>
                         </div>
+
+                        <div className="row">
+                            <h4>Client Info</h4>
+                            <ul className="client-list">
+                                <li>
+                                    {task.clientName ? <h6><b>Client: </b>{task.clientName}</h6> : ''}     
+                                </li>
+                                <li>
+                                    {task.clientPhone ? <h6><b>Phone: </b>{task.clientPhone}</h6> : ''}
+                                </li>
+                                <li>
+                                    {task.clientEmail ? <h6><b>Email: </b>{task.clientEmail}</h6> : ''}
+                                </li>
+                            </ul>
+                            <div className="divider grey darken-2"></div>
+                        </div>
+
+                        <div className="row">
+                        <h4>Project Description</h4>
+                        <p className="description">{task.description || ''}</p>
+                        <div className="divider grey darken-2"></div>
+                        </div>
+
+                        <div className="row">
+                            <h4>Dates</h4>
+                            <ul className="date-list">
+                                <li>
+                                    {task.beginDate ? <h6><b>Begin: </b>{task.beginDate}</h6> : ''}
+                                </li>
+                                <li>
+                                    {task.expectedDate ? <h6><b>Expected: </b>{task.expectedDate}</h6> : ''}
+                                </li>
+                            </ul>
+                        </div>
+ 
+                        <div className="row">
                         <Link to="/profile">
                             <button className="btn red">Back to profile</button>
                         </Link>
+                        </div>
+                        </div>
                     </div>
                 );            
         }

@@ -13,13 +13,15 @@ class TaskList extends Component {
             return (
                 <div className="row task-list-row" key={task._id}>
                     <div className=" col s12 m8 offset-m2"> 
-                        <div className="card grey darken-4">
+                        <div className="card grey darken-4 card-list">
                             <div className="card-content">
-                                {(task.beginDate) ? <span className="right grey-text">Begin: {task.beginDate}</span> : null}
                                 <span className="card-title">{task.subject}</span>
-                                {(task.expectedDate) ? <span className="right grey-text">Expected: {task.expectedDate}</span> : null}
+                                <span className="grey-text">{task.clientName}</span>
+                                <div className="right">
+                                {(task.beginDate) ? <div className="grey-text">Begin: {task.beginDate}</div> : null}
+                                {(task.expectedDate) ? <div className="grey-text">Expected: {task.expectedDate}</div> : null}
+                                </div>
                                 
-                                {task.clientName}
                                 
                             </div>
                             <div className="card-action">

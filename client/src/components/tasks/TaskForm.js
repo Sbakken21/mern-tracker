@@ -44,10 +44,11 @@ class TaskForm extends Component {
                     />
                     
                     <Field
+                        className="input-field col s6 materialize-textarea white-text"
                         name="description"
-                        type="text"
-                        component= {renderField}
-                        label="Description"
+                        type="textarea"
+                        component= "textarea"
+                        Placeholder="Description"
                     />
 
                     <Field

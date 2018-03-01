@@ -32,19 +32,17 @@ class Signin extends Component {
 
         return (
             <div className="container">
-                
                 <form className="col s12" onSubmit={this.props.handleSubmit(this.handleFormSubmit.bind(this))}>
-                <div className="row">
-                    <div className="col s6">
-                        <h2>Login</h2>
-                        {this.renderAlert()}
+                    <div className="row">
+                        <div className="col s6">
+                            <h2>Login</h2>
+                            {this.renderAlert()}
+                        </div>
                     </div>
-                </div>
                 
                     <div className="row">                    
                         <div className="input-field col s6">
-                            
-                            <Field placeholder="Username" type="text" name="username" component="input" />
+                            <Field id="username" placeholder="Username" type="text" name="username" component="input" />
                         </div>
                     </div>
                     <div className="row"> 

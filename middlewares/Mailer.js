@@ -7,18 +7,16 @@ class Mailer extends helper.Mail {
         super();
 
         this.sgApi = sendgrid(keys.sendGridKey);
-
         this.subject = 'Password Reset';
-        
         this.from_email = new helper.Email('no-reply@desolate-lake-47207.heroku.com');
-
         this.body = new helper.Content('text/html', content);
-
         this.recipient = new helper.Email(email);
 
-
-
         this.addContent(this.body);
+        const personalize = new helper.Personalization();
+        personalize.addTo(this.recipient);
+        this.addPersonalization(personalize);
+
     }
 
     addClickTracking() {
