@@ -29,6 +29,9 @@ Rename `example.dev.js` to `dev.js` and input the appropriate variable values:
 `SESSION_SECRET` is the key used to compute the hash for [express-session](https://www.npmjs.com/package/express-session).
 
 ### Todo
+- Add priority selection on tasks
+- Sort tasks by different criteria
+- Add change password and password recovery
 - Add confirm modal for deleting tasks
-- Add edit feature for tasks
+- Add edit/update feature for tasks
 - Add OAuth for Google and GitHub
