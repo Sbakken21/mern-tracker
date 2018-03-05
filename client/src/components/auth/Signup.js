@@ -100,6 +100,10 @@ function validate(values) {
         error.username = 'Username cannot contain special characters';
     }
 
+    if(!values.email) {
+        error.email = 'You must provide a valid email';
+    }
+
     if(!values.password) {
         error.password = 'You must provide a password';
     } else if (values.password.length < 5) {
